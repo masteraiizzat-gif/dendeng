@@ -10,7 +10,7 @@ or a single file full.* recorded in one take while watching the guide video
 
 Each line is: silence-trimmed -> high-pass 80 Hz -> de-mud -> presence lift -> compressed ->
 level-matched -> gently sped up (max 1.12x) only if it overruns its slot -> placed at its cue.
-The music is ducked ~7 dB under the voice (30 ms attack, 300 ms release).
+The music is ducked ~9 dB under the voice (30 ms attack, 300 ms release).
 """
 import sys, os, glob, json, subprocess, wave
 import numpy as np
@@ -91,7 +91,7 @@ for k in range(0, N, 64):  # block-rate follower (fast enough, smooth after inte
     acc = att * acc + (1 - att) * v if v > acc else rel ** 64 * acc + (1 - rel ** 64) * v
     e[k:k + 64] = acc
 e = np.clip(e / 0.08, 0, 1)
-gain = 1 - 0.55 * e  # about -7 dB when the voice is present
+gain = 1 - 0.65 * e  # about -9 dB when the voice is present
 mix = music * gain[:, None] + vo[:, None] * 0.95
 peak = np.abs(mix).max()
 if peak > 0.98: mix *= 0.98 / peak

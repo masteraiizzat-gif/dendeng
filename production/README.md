@@ -6,6 +6,8 @@ Final deliverables are in `../exports/`:
 |---|---|
 | `DENDENG_BERAPI_30s_tanpaVO_1080x1920_master.mp4` | v2 master (new hook, brand, phone number). Music only, voice-over pending. TikTok / Reels (H.264 High, 1080×1920, 30 fps, AAC 320 kbps, −14 LUFS) |
 | `DENDENG_BERAPI_30s_tanpaVO_1080x1920_whatsapp.mp4` | Same, WhatsApp Status size (under 16 MB) |
+| `DENDENG_BERAPI_30s_VO_1080x1920_master.mp4` | **Final v3: with female Malay voice-over.** TikTok / Reels |
+| `DENDENG_BERAPI_30s_VO_1080x1920_whatsapp.mp4` | Same, WhatsApp Status size (under 16 MB) |
 | `PANDUAN_RAKAMAN_VO.mp4` | Recording guide: the ad with each voice-over line captioned at the moment it must be spoken |
 
 v1 (`DENDENG_PADU_30s_*`) is in git history.
@@ -82,3 +84,10 @@ Text, timings and prices are in `render.py` → `build_text()` / `text_layer()`.
 * The source footage is WhatsApp-compressed (videos 464×832 and 576×1024, photos about 960×1280). The final video is 1080×1920. It was upscaled with Lanczos, light sharpening and film grain. AI upscaling was avoided because the brief rules out artificial textures. A 4K export would add no real detail, so none was made. Re-shooting in 4K, or sending the original phone files instead of WhatsApp copies, would sharpen the result noticeably.
 * The music and sound effects are original. They were synthesised in `music.py`, so there are no licensing issues for paid ads. If you prefer a licensed track, replace `soundtrack_raw.wav` and keep the hits at 0, 1, 1.5, 2, 10, 16, 17, 18.5, 23 and 28 s.
 * Fonts: Anton and Cinzel (SIL Open Font License, `fonts/OFL-LICENSE.txt`), free for commercial use.
+
+## v3: generated female voice-over
+
+* The voice is generated locally, with no cloud TTS and no API key. It uses `mesolitica/malaysian-parler-tts-mini-v1`, speaker "Shafiqah Idayu" (`tts_vo.py`, run in a separate venv with `pip install parler-tts` and `HF_HUB_DISABLE_XET=1`).
+* Several takes were generated for each line. `qa_vo.py` checked every take with Whisper large-v3-turbo: the text and digits must match the script exactly, the pitch must be female, and the take must fit its slot. The selected takes are in `vo/`, with the report in `vo/qa_report.json`. The full mix was then transcribed again: every line, both prices and 0187884575 are recognised correctly.
+* Music changes for the voice: the intro taiko build was moved after "Dendeng Berapi!" (3.5 s), the lead melody was lowered, and ducking is about 9 dB.
+* **Licence note:** the Parler-TTS base model is Apache-2.0 and the DAC codec is MIT. The Mesolitica fine-tune carries no explicit licence on HuggingFace. It is not marked non-commercial, but commercial use isn't explicitly granted either. For paid ads, a real voice talent (see `SKRIP_VOICE_OVER.md` + `mix_vo.py`) or a commercial TTS is the fully safe option.

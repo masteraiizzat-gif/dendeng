@@ -8,6 +8,6 @@
     {"id": "v5", "start": 17.00, "end": 19.10, "text": "Tiga ratus gram, dua puluh tujuh ringgit.",        "direction": "Jelas dan yakin. Setiap nombor disebut penuh."},
     {"id": "v6", "start": 19.45, "end": 21.70, "text": "Lima ratus gram, empat puluh lima ringgit.",      "direction": "Jelas dan yakin, sama nada dengan v5."},
     {"id": "v7", "start": 23.55, "end": 24.60, "text": "Order sekarang!",                                 "direction": "Ajakan, bertenaga."},
-    {"id": "v8", "start": 24.80, "end": 28.30, "text": "Hubungi kosong satu lapan, tujuh lapan lapan, empat lima tujuh lima.", "direction": "Perlahan dan sangat jelas, jeda kecil antara kumpulan nombor."}
+    {"id": "v8", "start": 24.70, "end": 28.20, "text": "Hubungi kosong satu lapan, tujuh lapan lapan, empat lima tujuh lima.", "direction": "Perlahan dan sangat jelas, jeda kecil antara kumpulan nombor."}
   ]
 }

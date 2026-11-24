@@ -169,12 +169,12 @@ add(whoosh(0.6), 1.0 - 0.37, 0.5, -0.4)
 add(impact(0.8), 1.0, 0.75)
 add(taiko(), 1.5, 0.85, -0.2); add(bass_hit(), 1.5, 0.5)
 add(taiko(), 2.0, 0.95, 0.2); add(bass_hit(), 2.0, 0.6)
-for tk in (2.5, 2.75, 3.0, 3.25, 3.5, 3.625, 3.75, 3.875):
+for tk in (3.5, 3.625, 3.75, 3.875):  # build starts after the "Dendeng Berapi!" voice-over line
     add(taiko(), tk, 0.45 + 0.1 * (tk - 2.5), rng.uniform(-0.4, 0.4))
 for i in range(16):
     add(hat(), 2.0 + i * 0.125, 0.12 + 0.012 * i, 0.3)
 add(riser(1.5), 2.5, 0.45)
-add(sparkle(1.0), 2.35, 0.25, 0.3)
+add(sparkle(1.0), 3.4, 0.25, 0.3)
 
 # --- grooves
 def groove(t0, t1, prog, energy=1.0, clap_on=False, arp=False, hats=True):
