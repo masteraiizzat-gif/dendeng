@@ -1,0 +1,13 @@
+{
+  "voice": "Perempuan, Bahasa Melayu Malaysia. Nada mesra, yakin, sedikit menggoda (bukan menjerit). Senyum semasa bercakap.",
+  "lines": [
+    {"id": "v1", "start": 0.35, "end": 2.20, "text": "Rasa pedas yang padu...",                         "direction": "HOOK. Perlahan, dekat dengan mic, hampir berbisik. Tekan perkataan 'padu'."},
+    {"id": "v2", "start": 2.35, "end": 3.70, "text": "Dendeng Berapi!",                                 "direction": "Terang dan bertenaga. Ini nama jenama, sebut dengan bangga."},
+    {"id": "v3", "start": 4.60, "end": 9.30, "text": "Setiap suapan... pedasnya menggoda, rasanya memikat.", "direction": "Lembut, perlahan, berselera. Jeda kecil selepas 'suapan'."},
+    {"id": "v4", "start": 10.60, "end": 14.20, "text": "Rasa yang buat nak lagi... dan lagi!",            "direction": "Main-main dan ceria. 'dan lagi!' sambil senyum."},
+    {"id": "v5", "start": 17.00, "end": 19.10, "text": "Tiga ratus gram, dua puluh tujuh ringgit.",        "direction": "Jelas dan yakin. Setiap nombor disebut penuh."},
+    {"id": "v6", "start": 19.45, "end": 21.70, "text": "Lima ratus gram, empat puluh lima ringgit.",      "direction": "Jelas dan yakin, sama nada dengan v5."},
+    {"id": "v7", "start": 23.55, "end": 24.60, "text": "Order sekarang!",                                 "direction": "Ajakan, bertenaga."},
+    {"id": "v8", "start": 24.80, "end": 28.30, "text": "Hubungi kosong satu lapan, tujuh lapan lapan, empat lima tujuh lima.", "direction": "Perlahan dan sangat jelas, jeda kecil antara kumpulan nombor."}
+  ]
+}

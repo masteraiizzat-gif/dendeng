@@ -212,28 +212,28 @@ l, r = pad_note([n * 2 for n in CH["Dm"][0]], 1.1, 900); add_st(l, r, 16.0, 0.6)
 add(rev_cymbal(0.7), 16.3, 0.3)
 # price reveal 17-23
 add(bass_hit(), 17.0, 0.9); add(impact(0.7), 17.35, 0.55)
-add(bass_hit(), 18.5, 0.9); add(impact(0.7), 18.85, 0.55)
+add(bass_hit(), 19.4, 0.9); add(impact(0.7), 19.75, 0.55)
 groove(17.0, 23.0, ["Gm", "Dm", "A"], 0.85, clap_on=True, arp=False)
-for ts in (19.4, 21.4, 19.7, 21.7): add(sparkle(0.8), ts, 0.18, rng.uniform(-0.5, 0.5))
+for ts in (20.3, 21.9, 20.6, 22.2): add(sparkle(0.8), ts, 0.18, rng.uniform(-0.5, 0.5))
 add(riser(1.4), 21.6, 0.5); add(rev_cymbal(0.8), 22.2, 0.3)
 # hero 23-28 + final
 add(impact(1.0), 23.0, 0.85); add(sparkle(1.3), 23.15, 0.3, -0.2)
-groove(23.0, 28.0 - 1e-6 + 1.0, ["Dm", "Bb", "C"], 1.0, clap_on=True, arp=True)  # 3 bars (to 29) but we cut at 28
+groove(23.0, 29.0, ["Dm", "Bb", "C"], 1.0, clap_on=True, arp=True)  # 3 bars (to 29), hard-cut at 28.5
 lead = [(23.0, 587.33, 0.5), (23.5, 698.46, 0.5), (24.0, 880.0, 1.0), (25.0, 783.99, 0.5), (25.5, 698.46, 0.5),
         (26.0, 659.25, 1.0), (27.0, 698.46, 0.5), (27.5, 880.0, 0.5)]
-for t0, f, d in lead: add(pluck(f, d + 0.2), t0, 0.12, 0.1)
+for t0, f, d in lead: add(pluck(f, d + 0.2), t0, 0.06, 0.1)  # kept low: sits under the voice-over
 add(sparkle(1.0), 26.2, 0.18, 0.4)
-# hard stop at 28 -> final impact & tail
-i28 = int(28.0 * SR)
+# hard stop at 28.5 -> final impact & tail
+i28 = int(28.5 * SR)
 fade = np.ones(N); fade[i28 - 240:i28] = np.linspace(1, 0, 240); fade[i28:] = 0
 L *= fade; R *= fade
-add(riser(0.6), 27.4, 0.4)
-add(impact(1.15), 28.0, 1.0)
-l, r = pad_note([n * 2 for n in CH["Dm"][0]] + [293.66], 2.0, 1500); add_st(l, r, 28.0, 0.5)
-add(sparkle(1.2), 28.1, 0.22)
+add(riser(0.6), 27.9, 0.4)
+add(impact(1.15), 28.5, 1.0)
+l, r = pad_note([n * 2 for n in CH["Dm"][0]] + [293.66], 2.0, 1500); add_st(l, r, 28.5, 0.5)
+add(sparkle(1.2), 28.6, 0.22)
 
 # whooshes on cuts
-for tc, pan in ((4.0, 0.6), (6.0, -0.5), (8.0, 0.4), (10.0, -0.4), (12.0, 0.5), (14.0, -0.5), (16.0, 0.5), (17.0, -0.6), (18.5, 0.6), (23.0, 0.0)):
+for tc, pan in ((4.0, 0.6), (6.0, -0.5), (8.0, 0.4), (10.0, -0.4), (12.0, 0.5), (14.0, -0.5), (16.0, 0.5), (17.0, -0.6), (19.4, 0.6), (23.0, 0.0)):
     add(whoosh(0.55), tc - 0.34, 0.42, pan)
 
 # sizzle under food scenes

@@ -4,8 +4,23 @@ Final deliverables are in `../exports/`:
 
 | File | Use |
 |---|---|
-| `DENDENG_PADU_30s_1080x1920_master.mp4` | Master: TikTok / Instagram Reels / Facebook Reels (H.264 High, 1080×1920, 30 fps, AAC 320 kbps, −14 LUFS) |
-| `DENDENG_PADU_30s_1080x1920_whatsapp.mp4` | Smaller copy for WhatsApp Status (H.264, under 16 MB) |
+| `DENDENG_BERAPI_30s_tanpaVO_1080x1920_master.mp4` | v2 master (new hook, brand, phone number). Music only, voice-over pending. TikTok / Reels (H.264 High, 1080×1920, 30 fps, AAC 320 kbps, −14 LUFS) |
+| `DENDENG_BERAPI_30s_tanpaVO_1080x1920_whatsapp.mp4` | Same, WhatsApp Status size (under 16 MB) |
+| `PANDUAN_RAKAMAN_VO.mp4` | Recording guide: the ad with each voice-over line captioned at the moment it must be spoken |
+
+v1 (`DENDENG_PADU_30s_*`) is in git history.
+
+## v2 changes
+* Opening hook on screen: **RASA PEDAS YANG PADU / DENDENG BERAPI!** (replaces "INI BARU DENDENG PADU!")
+* Price scene header: **DENDENG BERAPI**. The 500G card moved to 19.4 s to match the voice-over.
+* Final scene: **HUBUNGI +6018-788 4575** added below ORDER SEKARANG!, and the final impact moved to 28.5 s.
+* Voice-over script and timings: `vo_script.json` / `SKRIP_VOICE_OVER.md`. Mixer: `mix_vo.py`. Export: `export.sh`.
+
+### Adding the voice-over
+```bash
+python3 mix_vo.py $WORK /path/to/vo_files $WORK/mix_with_vo.wav   # v1.* … v8.*  or  full.*
+./export.sh $WORK $WORK/mix_with_vo.wav ../exports DENDENG_BERAPI_30s_VO
+```
 
 ## Source material (Google Drive folder, all 6 files reviewed)
 
@@ -34,8 +49,7 @@ Final deliverables are in `../exports/`:
 | 17–23 s | Packaging plate (defocused, orbit) | gold glass price cards, bass impacts, light sweeps | DENDENG PADU · 300G RM27 · 500G RM45 |
 | 23–30 s | Packaging hero | rack into focus, specular light sweep, final impact | DENDENG PADU, / RASA MEMIKAT! / 300G RM27 \| 500G RM45 / ORDER SEKARANG! |
 
-No phone number, website, promotion, certification or ingredient claim was added.
-The contact number visible in the packaging photo is printed on your real label. It was not added as on-screen text.
+No website, promotion, certification or ingredient claim was added. The phone number (+6018-788 4575) is shown in v2 at the client's request, and it matches the packaging label.
 
 ## Rebuild from scratch
 

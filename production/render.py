@@ -496,8 +496,8 @@ CUTS = {1.0: ("zoom", 0.17, None), 4.0: ("whip", 0.2, (1, 0)), 6.0: ("zoom", 0.1
         8.0: ("whip", 0.2, (0, 1)), 10.0: ("zoom", 0.2, None), 12.0: ("whip", 0.2, (-1, 0)),
         14.0: ("zoom", 0.17, None), 16.0: ("whip", 0.2, (1, 0))}
 FLASHES = [(0.0, 0.5, 0.12), (1.0, 0.33, 0.1), (4.0, 0.2, 0.1), (10.0, 0.36, 0.12), (16.0, 0.4, 0.12),
-           (17.0, 0.45, 0.12), (17.35, 0.25, 0.1), (18.85, 0.25, 0.1), (23.0, 0.25, 0.2), (28.0, 0.34, 0.22)]
-SHAKES = [(0.0, 16), (1.5, 18), (2.0, 20), (10.0, 14), (11.0, 12), (16.0, 10), (17.35, 14), (18.85, 14), (28.0, 16)]
+           (17.0, 0.45, 0.12), (17.35, 0.25, 0.1), (19.75, 0.25, 0.1), (23.0, 0.25, 0.2), (28.5, 0.34, 0.22)]
+SHAKES = [(0.0, 16), (1.5, 18), (2.0, 20), (10.0, 14), (11.0, 12), (16.0, 10), (17.35, 14), (19.75, 14), (28.5, 16)]
 
 def base_frame(t):
     for T, (kind, hw, d) in CUTS.items():
@@ -516,12 +516,13 @@ def base_frame(t):
 # ----------------------------------------------------------------- typography
 E = {}
 def build_text():
-    E["ini"] = text_elem([("INI BARU", "cinzel", 92, "cream", 22)], glow=0.25)
+    E["ini"] = text_elem([("RASA PEDAS YANG PADU", "cinzel", 56, "cream", 5)], glow=0.25)
     E["dendeng"] = text_elem([("DENDENG", "anton", 270, "white", 6)], glow=0.30)
-    E["padu"] = text_elem([("PADU!", "anton", 300, "gold", 8)], glow=0.55)
+    E["padu"] = text_elem([("BERAPI!", "anton", 270, "gold", 8)], glow=0.55)
     E["rasa1"] = text_elem([("RASA YANG BUAT", "cinzel", 80, "cream", 10)], glow=0.25)
     E["rasa2"] = text_elem([("NAK LAGI!", "anton", 250, "gold", 8)], glow=0.5)
-    E["hdr"] = text_elem([("DENDENG PADU", "cinzel", 62, "cream", 16)], glow=0.2)
+    E["hdr"] = text_elem([("DENDENG BERAPI", "cinzel", 58, "cream", 12)], glow=0.2)
+    E["tel"] = text_elem([("HUBUNGI", "anton", 66, "cream", 3), ("+6018-788 4575", "anton", 100, "white", 3)], gap=26, glow=0.35)
     E["w300"] = text_elem([("300G", "anton", 120, "white", 4)], glow=0.15)
     E["p27"] = text_elem([("RM27", "anton", 205, "gold", 4)], glow=0.45)
     E["w500"] = text_elem([("500G", "anton", 120, "white", 4)], glow=0.15)
@@ -593,8 +594,8 @@ def text_layer(x, t):
         x = comp(x, E["hdr"], W / 2, 455 - 20 * (1 - k), op=k * (1 - out))
         x = comp(x, E["line"], W / 2, 520, op=k * (1 - out), reveal=None, scale=0.4 + 0.6 * k)
         flo = 6 * math.sin(t * 1.6)
-        for (cy, t0, frm, wkey, pkey, sw) in ((800, 17.0, -1, "w300", "p27", (19.4, 21.4)),
-                                               (1215, 18.5, 1, "w500", "p45", (19.7, 21.7))):
+        for (cy, t0, frm, wkey, pkey, sw) in ((800, 17.0, -1, "w300", "p27", (20.3, 21.9)),
+                                               (1215, 19.4, 1, "w500", "p45", (20.6, 22.2))):
             kc = ease_out_expo((t - t0) / 0.45) if t >= t0 else 0
             if kc <= 0: continue
             dx = frm * 1100 * (1 - kc)
@@ -615,27 +616,30 @@ def text_layer(x, t):
                          sweep=swp, glow_boost=0.5 * math.exp(-(t - t0 - 0.35) * 4))
     # --- scene 5 hero 23.3 - 30
     if t >= 23.3:
-        x = scrim(x, 150, 360, 0.55 * sstep(23.3, 23.7, t))
-        x = scrim(x, 1500, 1760, 0.75 * sstep(24.4, 24.9, t))
-        k = ease_out_cubic((t - 23.35) / 0.5)
-        pulse_t = t - 28.0
+        x = scrim(x, 150, 360, 0.55 * sstep(23.15, 23.5, t))
+        x = scrim(x, 1420, 1790, 0.78 * sstep(23.5, 24.0, t))
+        k = ease_out_cubic((t - 23.2) / 0.5)
+        pulse_t = t - 28.5
         gb = 0.5 * math.exp(-pulse_t * 3) if pulse_t > 0 else 0
         x = comp(x, E["fin1"], W / 2, 205 + 40 * (1 - k), op=k, blur=10 * (1 - k), glow_boost=gb,
                  sweep=((t - 26.2) / 0.9) if 26.2 < t < 27.1 else None)
-        s = slam(t, 23.75, 0.3)
+        s = slam(t, 23.45, 0.3)
         if s: x = comp(x, E["fin2"], W / 2, 330, scale=s["scale"] * 0.9 + 0.1, op=s["op"], blur=s["blur"],
                        glow_boost=gb + 0.4 * math.exp(-(t - 23.75) * 4),
                        sweep=((t - 26.5) / 0.9) if 26.5 < t < 27.4 else None)
-        kp = ease_out_cubic((t - 24.75) / 0.45)
-        if kp > 0: x = comp(x, E["finp"], W / 2, 1565 + 30 * (1 - kp), op=kp, blur=8 * (1 - kp), glow_boost=gb,
+        kp = ease_out_cubic((t - 24.2) / 0.45)
+        if kp > 0: x = comp(x, E["finp"], W / 2, 1478 + 30 * (1 - kp), op=kp, blur=8 * (1 - kp), glow_boost=gb,
                             sweep=((t - 27.0) / 0.9) if 27.0 < t < 27.9 else None)
-        s = slam(t, 25.5, 0.3)
+        s = slam(t, 23.65, 0.3)
         if s:
-            beat = (t - 25.5) % 0.5
-            pulse = 1 + 0.035 * math.exp(-beat * 9) if t > 25.9 else 1
-            x = comp(x, E["cta"], W / 2, 1705, scale=s["scale"] * 0.85 * pulse + 0.15 * pulse - 0.0, op=s["op"], blur=s["blur"],
-                     glow_boost=gb + 0.25 * math.exp(-beat * 6) * (t > 25.9),
-                     sweep=((t - 26.0) / 0.8) if 26.0 < t < 26.8 else (((t - 28.1) / 0.8) if 28.1 < t < 28.9 else None))
+            beat = (t - 24.0) % 0.5
+            pulse = 1 + 0.035 * math.exp(-beat * 9) if t > 24.0 else 1
+            x = comp(x, E["cta"], W / 2, 1605, scale=s["scale"] * 0.85 * pulse + 0.15 * pulse - 0.0, op=s["op"], blur=s["blur"],
+                     glow_boost=gb + 0.25 * math.exp(-beat * 6) * (t > 24.0),
+                     sweep=((t - 26.0) / 0.8) if 26.0 < t < 26.8 else (((t - 28.6) / 0.8) if 28.6 < t < 29.4 else None))
+        kt = ease_out_cubic((t - 24.8) / 0.4)
+        if kt > 0: x = comp(x, E["tel"], W / 2, 1735 + 26 * (1 - kt), op=kt, blur=8 * (1 - kt), glow_boost=gb,
+                            sweep=((t - 25.4) / 0.9) if 25.4 < t < 26.3 else (((t - 27.6) / 0.9) if 27.6 < t < 28.5 else None))
     return x
 
 # ----------------------------------------------------------------- frame
